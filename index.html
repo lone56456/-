@@ -717,6 +717,16 @@ overlay.addEventListener('click', () => {
 overlay.addEventListener('mousedown', (e) => e.stopPropagation());
 
 /* ============ 启动 ============ */
+// 初始化游戏状态：让开始界面背后的地图/坦克能正确渲染，
+// 否则首次 render() 会因 grid 未初始化而抛错，导致黑屏
+level = 1;
+score = 0;
+lives = 3;
+gameOver = false;
+paused = false;
+started = false;
+newLevel();
+
 lastTime = performance.now();
 requestAnimationFrame(loop);
 </script>
